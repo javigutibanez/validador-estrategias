@@ -35,3 +35,43 @@ El modelo tiene poder predictivo positivo (correlación 0.57) con una muestra de
 Las limitaciones son el tamaño del dataset y la varianza estadística alta con pocos datos.
 El Mes 5 añadirá Machine Learning para que el modelo aprenda los pesos óptimos automáticamente.
 
+## Validador de Estrategias v0.2 — Semana 2 completada
+
+### Qué hace esta semana
+Backtesting con vectorbt sobre precios reales de DAL, UAL y AAL — las 3 aerolíneas
+del Comparador del Mes 1. Estrategia basada en cruces de medias móviles (20 y 50 días).
+
+### Por qué cotizadas y no PYMEs
+vectorbt necesita series de precios densas (datos diarios). Las PYMEs solo tienen datos
+anuales — insuficientes para simular operaciones de compra y venta. Las aerolíneas son
+el proxy natural: mismo sector, datos de alta frecuencia.
+
+### Estrategia — cruce de medias móviles
+- **Compra** cuando la MA 20 días cruza hacia arriba la MA 50 días (golden cross)
+- **Venta** cuando la MA 20 días cruza hacia abajo la MA 50 días (death cross)
+- Comisión del 0.1% por operación + deslizamiento del 0.1%
+
+### Resultados del backtest (mayo 2024 → mayo 2026)
+| Empresa | Total Return | Sharpe Ratio | Max Drawdown | Win Rate |
+|---|---|---|---|---|
+| United | 151.4% | 1.93 | 23.3% | 100% |
+| American | 48.1% | 0.94 | 27.9% | 50% |
+| Delta | 14.2% | 0.45 | 31.5% | 50% |
+| **Portfolio** | **71.2%** | **1.11** | **27.6%** | **67%** |
+
+### Estrategia vs Buy & Hold
+| | Estrategia MA | Buy & Hold pasivo |
+|---|---|---|
+| Return total | 71.2% | 37.0% |
+| Veredicto | ✅ La estrategia bate al mercado casi el doble |
+
+### Archivos
+- **validador_estrategias_v02.ipynb** — notebook completo
+- **senales_trading.png** — señales de compra y venta sobre Delta Airlines
+- **equity_curve.png** — evolución del capital vs buy & hold
+
+### Conclusión
+United Airlines responde muy bien a la estrategia de media móvil — todas las operaciones
+fueron ganadoras. Delta responde mal — el Sharpe de 0.45 no justifica la estrategia activa
+frente al buy & hold. La Semana 3 optimizará las ventanas de media móvil para mejorar
+los resultados en Delta y American.
