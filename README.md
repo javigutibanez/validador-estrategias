@@ -75,3 +75,34 @@ United Airlines responde muy bien a la estrategia de media móvil — todas las 
 fueron ganadoras. Delta responde mal — el Sharpe de 0.45 no justifica la estrategia activa
 frente al buy & hold. La Semana 3 optimizará las ventanas de media móvil para mejorar
 los resultados en Delta y American.
+
+## Validador de Estrategias v0.3 — Semana 3 completada
+
+### Qué hace esta semana
+Optimización sistemática de parámetros — grid search de ventanas de media móvil,
+validación train-test y optimización de pesos del scoring de PYMEs.
+
+### Resultados clave
+
+**Grid search (25 combinaciones probadas)**
+Mejores parámetros: MA30/MA50 — Sharpe medio 1.251, retorno medio 79.2%.
+Las ventanas largas funcionan mejor: las aerolíneas tienen tendencias largas
+y las ventanas cortas generan demasiadas señales falsas.
+
+**Validación train-test (70% / 30%)**
+Degradación del Sharpe entre 88-91% en las 3 aerolíneas — overfitting claro.
+Con solo 2 años de datos no hay suficiente histórico para que los parámetros
+generalicen a datos nuevos. El Mes 5 abordará esto con cross-validation múltiple.
+
+**Optimización de pesos del scoring de PYMEs**
+Probadas 5 combinaciones de peso margen / peso crecimiento.
+Mejor combinación → ver output del notebook.
+
+### Lección clave
+Optimizar sobre datos históricos siempre da buenos resultados. El test real
+es si funcionan en datos nuevos. Con pocos datos la respuesta es no —
+por eso el Mes 5 usa Machine Learning con cross-validation.
+
+### Archivos
+- **validador_estrategias_v03.ipynb** — notebook completo de la semana
+
