@@ -106,3 +106,41 @@ por eso el Mes 5 usa Machine Learning con cross-validation.
 ### Archivos
 - **validador_estrategias_v03.ipynb** — notebook completo de la semana
 
+## Validador de Estrategias — Semana 4 completada 
+
+### Qué hace esta semana
+Cierre del Mes 4 — dashboard de validación, Excel final con 4 hojas
+y sección de validación empírica integrada en el Analizador v0.4.
+
+### Resumen del Mes 4 completo
+| Métrica | Resultado |
+|---|---|
+| Correlación score-crecimiento | 0.57 ✓ poder predictivo positivo |
+| Tasa de acierto empresas TOP | 67% |
+| Retorno estrategia MA vs buy & hold | 71.2% vs 37.0% |
+| Sharpe medio | 1.11 |
+| Mejor MA (grid search) | MA30/MA50 — Sharpe 1.251 |
+| Degradación train-test | 88-91% — necesita más datos |
+
+### Archivos
+- **dashboard_validacion.png** — 4 paneles con todos los resultados del Mes 4
+- **validador_estrategias_final.xlsx** — Excel con 4 hojas
+- **validador_estrategias_v03.ipynb** — Notebook final del Mes 4
+
+
+
+**CONCLUSIÓN FINAL**
+## Validador de Estrategias — completado Mes 4
+ 
+### Qué hace
+- Backtest manual del scoring de PYMEs sobre datos históricos 2022-2024
+- Backtest cuantitativo con vectorbt sobre DAL, UAL, AAL (2 años de datos reales)
+- Grid search de parámetros de medias móviles
+- Validación honesta con separación train-test
+- Optimización de pesos del modelo de scoring
+- Dashboard de validación con 4 paneles
+- Excel con 4 hojas: backtest, métricas, grid search y resumen ejecutivo
+ 
+
+
+
